@@ -4,7 +4,6 @@ import { navLinks } from '../constants'
 function Navbar() {
   const handleMenuMobile : () => void = () => {
     const menu = document.querySelector('.menu')
-    console.log( 'funcionando')
     menu?.classList.toggle('hidden')
   }
 
@@ -44,20 +43,20 @@ function Navbar() {
   const renderNavLinksMobile : () => JSX.Element = () => {
     return (
       <div className='block lg:hidden w-1/6 lg:w-4/6'>
-        <a href='#' className='link' id='mobile-menu' onClick={ handleMenuMobile }>Menu</a>
-        <ul className='menu hidden w-full absolute z-50 left-0 text-center bg-gray-800'>
+        <a href='#' className='link text-gray-950' id='mobile-menu' onClick={ handleMenuMobile }>Menu</a>
+        <ul className='menu hidden w-full absolute z-50 left-0 text-center bg-gray-800 top-24'>
           {navLinks.map( (link, index) => {
             if (index === 3 ) {
               return (
                 <li key={ crypto.randomUUID() }>
-                  <a href={ link.href } className='link link-extended'>{ link.label }</a>
+                  <a href={ link.href } className='my-4 inline-block link link-extended'>{ link.label }</a>
                 </li>
               )
             }
             else if (index === 4 ) {
               return (
                 <li key={ crypto.randomUUID() }>
-                  <a href={ link.href } className='link link-buy'>{ link.label }</a>
+                  <a href={ link.href } className='my-4 inline-block link link-buy transition-all duration-500'>{ link.label }</a>
                 </li>
               )
             }
@@ -74,15 +73,6 @@ function Navbar() {
       </div>
       )
   } 
-
-  const menuButton = document.querySelector('#mobile-menu')
-
-    menuButton?.addEventListener('click', () => {
-      const menu = document.querySelector('.menu')
-        console.log({ menu })
-        menu?.classList.toggle('hidden')
-    }
-    )
 
   return (
     <header className="bg-yellow-300 md:bg-red-blue xl:bg-red-500 2xl:bg-gray-800 mx-auto">

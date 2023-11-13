@@ -4,7 +4,7 @@ import Hero from './sections/Hero'
 function App() {
 
   return (
-    <div className='container mx-auto'>
+    <div className='xsm:w-full max-w-[1920px] mx-auto'>
       <Navbar />
       <Hero />
     </div>
