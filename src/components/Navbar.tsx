@@ -2,44 +2,90 @@ import headerLogo from '../assets/img/logo.png'
 import { navLinks } from '../constants'
 
 function Navbar() {
-  const renderNavLinks : () => JSX.Element[] = () => {
-    return (
-      navLinks.map( (link, index) => {
-        if (index === 3 ) {
-          return (
-            <li key={ crypto.randomUUID() }>
-              <a href={ link.href } className='link link-extended'>{ link.label }</a>
-            </li>
-          )
-        }
-        else if (index === 4 ) {
-          return (
-            <li key={ crypto.randomUUID() }>
-              <a href={ link.href } className='link link-buy'>{ link.label }</a>
-            </li>
-          )
-        }
-        /* return (
-          <li key={ crypto.randomUUID() }>
-            <a href={ link.href } className='link'>{ link.label }</a>
-          </li>
-        ) */
-        else {
-          return (
-            <li key={ crypto.randomUUID() }>
-              <a href={ link.href } className='link'>{ link.label }</a>
-            </li>
-          )
-        }
-          
-        }
-      )
-    )
+  const handleMenuMobile : () => void = () => {
+    const menu = document.querySelector('.menu')
+    console.log( 'funcionando')
+    menu?.classList.toggle('hidden')
   }
 
+  const renderNavLinks : () => JSX.Element = () => {
+    return (
+      <>
+      <div className='links hidden lg:block w-1/6 md:w-4/6'>
+        <ul className='flex items-center justify-center gap-5'>
+          {navLinks.map( (link, index) => {
+            if (index === 3 ) {
+              return (
+                <li key={ crypto.randomUUID() }>
+                  <a href={ link.href } className='link link-extended'>{ link.label }</a>
+                </li>
+              )
+            }
+            else if (index === 4 ) {
+              return (
+                <li key={ crypto.randomUUID() }>
+                  <a href={ link.href } className='link link-buy'>{ link.label }</a>
+                </li>
+              )
+            }
+            else {
+              return (
+                <li key={ crypto.randomUUID() }>
+                  <a href={ link.href } className='link'>{ link.label }</a>
+                </li>
+              )
+            }         
+          })}
+        </ul>
+      </div>
+      </>
+    )
+  }
+  const renderNavLinksMobile : () => JSX.Element = () => {
+    return (
+      <div className='block lg:hidden w-1/6 lg:w-4/6'>
+        <a href='#' className='link' id='mobile-menu' onClick={ handleMenuMobile }>Menu</a>
+        <ul className='menu hidden w-full absolute z-50 left-0 text-center bg-gray-800'>
+          {navLinks.map( (link, index) => {
+            if (index === 3 ) {
+              return (
+                <li key={ crypto.randomUUID() }>
+                  <a href={ link.href } className='link link-extended'>{ link.label }</a>
+                </li>
+              )
+            }
+            else if (index === 4 ) {
+              return (
+                <li key={ crypto.randomUUID() }>
+                  <a href={ link.href } className='link link-buy'>{ link.label }</a>
+                </li>
+              )
+            }
+            else {
+              return (
+                <li key={ crypto.randomUUID() }>
+                  <a href={ link.href } className='link'>{ link.label }</a>
+                </li>
+              )
+            }          
+            }
+          )}
+        </ul>
+      </div>
+      )
+  } 
+
+  const menuButton = document.querySelector('#mobile-menu')
+
+    menuButton?.addEventListener('click', () => {
+      const menu = document.querySelector('.menu')
+        console.log({ menu })
+        menu?.classList.toggle('hidden')
+    }
+    )
 
   return (
-    <header className="container bg-yellow-300 md:bg-red-blue xl:bg-red-500 2xl:bg-gray-800 mx-auto">
+    <header className="bg-yellow-300 md:bg-red-blue xl:bg-red-500 2xl:bg-gray-800 mx-auto">
         <nav className="flex justify-between lg:justify-start items-center p-2">
           <div className='w-1/6'>
             <a href={ '/' } className='p-2 block'>
@@ -51,18 +97,8 @@ function Navbar() {
               />
             </a>
           </div>
-          <div className='links hidden lg:block w-1/6 md:w-4/6'>
-            <ul className='menu flex items-center justify-center gap-5'>
-              { renderNavLinks() }
-              {/* { navLinks.map( link => {
-                return (
-                  <li key={ crypto.randomUUID() }>
-                    <a href={ link.href } >{ link.label }</a>
-                  </li>
-                )
-              }) } */}
-            </ul>
-          </div>
+          { renderNavLinks() }
+          { renderNavLinksMobile()}        
         </nav>
       </header>
   )

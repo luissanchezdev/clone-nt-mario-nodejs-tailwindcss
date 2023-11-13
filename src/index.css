@@ -13,3 +13,7 @@
 .link-buy {
     @apply rounded-full bg-red-500 px-4 py-3 hover:text-black hover:bg-white transition duration-500;
 }
+
+.change-color {
+    background-color: red;
+}
