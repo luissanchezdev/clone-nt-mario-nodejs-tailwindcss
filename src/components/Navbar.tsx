@@ -75,7 +75,7 @@ function Navbar() {
   } 
 
   return (
-    <header className="bg-yellow-300 md:bg-red-blue xl:bg-red-500 2xl:bg-gray-800 mx-auto">
+    <header className="bg-gray-800 mx-auto">
         <nav className="flex justify-between lg:justify-start items-center p-2">
           <div className='w-1/6'>
             <a href={ '/' } className='p-2 block'>
