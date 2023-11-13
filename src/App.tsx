@@ -1,5 +1,5 @@
 import { Navbar } from './components/index'
-import Hero from './sections/Hero'
+import { Hero, Banner, Contact, Footer } from './sections/index'
 
 function App() {
 
@@ -7,6 +7,9 @@ function App() {
     <div className='xsm:w-full max-w-[1920px] mx-auto'>
       <Navbar />
       <Hero />
+      <Banner />
+      <Contact />
+      <Footer />
     </div>
   )
 }
